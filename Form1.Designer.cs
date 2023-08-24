@@ -31,11 +31,11 @@
             diagram = new ScottPlot.FormsPlot();
             ReadFromFileButton = new Button();
             openFileDialog1 = new OpenFileDialog();
-            SunButton = new Button();
             starScroll = new TrackBar();
             label1 = new Label();
             starBox = new TextBox();
             clearButton = new Button();
+            SunCheckBox = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)starScroll).BeginInit();
             SuspendLayout();
             // 
@@ -64,18 +64,6 @@
             // openFileDialog1
             // 
             openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // SunButton
-            // 
-            SunButton.Enabled = false;
-            SunButton.Location = new Point(12, 117);
-            SunButton.Name = "SunButton";
-            SunButton.Size = new Size(390, 53);
-            SunButton.TabIndex = 2;
-            SunButton.Text = "Подсветить Солнце";
-            SunButton.UseVisualStyleBackColor = true;
-            SunButton.Visible = false;
-            SunButton.Click += SunButton_Click;
             // 
             // starScroll
             // 
@@ -118,16 +106,29 @@
             clearButton.UseVisualStyleBackColor = true;
             clearButton.Click += clearButton_Click;
             // 
+            // SunCheckBox
+            // 
+            SunCheckBox.AutoSize = true;
+            SunCheckBox.CheckAlign = ContentAlignment.MiddleRight;
+            SunCheckBox.Location = new Point(12, 131);
+            SunCheckBox.Name = "SunCheckBox";
+            SunCheckBox.Size = new Size(167, 24);
+            SunCheckBox.TabIndex = 7;
+            SunCheckBox.Text = "Подсветить Солнце";
+            SunCheckBox.UseVisualStyleBackColor = true;
+            SunCheckBox.Visible = false;
+            SunCheckBox.CheckedChanged += SunCheckBox_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1442, 775);
+            Controls.Add(SunCheckBox);
             Controls.Add(clearButton);
             Controls.Add(starBox);
             Controls.Add(label1);
             Controls.Add(starScroll);
-            Controls.Add(SunButton);
             Controls.Add(ReadFromFileButton);
             Controls.Add(diagram);
             MinimumSize = new Size(1200, 700);
@@ -143,10 +144,10 @@
         private ScottPlot.FormsPlot diagram;
         private Button ReadFromFileButton;
         private OpenFileDialog openFileDialog1;
-        private Button SunButton;
         private TrackBar starScroll;
         private Label label1;
         private TextBox starBox;
         private Button clearButton;
+        private CheckBox SunCheckBox;
     }
 }
