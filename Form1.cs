@@ -11,8 +11,6 @@ namespace SpaceChart
     {
         private string[] lines;
         uint AmountOfStars = 1000;
-        DraggableMarkerPlot myDraggableMarker = new ScottPlot.Plottable.DraggableMarkerPlot();
-        //private List<Star> StarList;
         public Form1()
         {
             InitializeComponent();
@@ -43,13 +41,20 @@ namespace SpaceChart
             }
             diagram.Plot.Legend();
             diagram.Refresh();
+            textBox1.Text = "ƒиаграмма √ерцшпрунга Ч –ассела Ч диаграмма, используема€ в астрономии, котора€ представл€ет " +
+                "зависимость между абсолютной звЄздной величиной и спектральным классом дл€ звЄзд, либо между другими величинами, " +
+                "которые тесно св€заны с этими параметрами. ¬ любом случае, в верхней части диаграммы оказываютс€ €ркие звЄзды, " +
+                "а в нижней части Ч тусклые; в левой части Ч гор€чие звЄзды голубого цвета, в правой Ч холодные и красные. \r\n" +
+                "¬ы можете также получить справку о различных классах светимости по нажатию галочки р€дом с cоответствующим названием.";
             SunCheckBox.Visible = true;
+            InfoLabel.Visible = true;
             MainSequenceBox.Visible = true;
             clearButton.Visible = true;
             BrightGiantsBox.Visible = true;
             redGiantsBox.Visible = true;
             SuperGiantsBox.Visible = true;
             WhiteDwarfsBox.Visible = true;
+            textBox1.Visible = true;
         }
 
 
@@ -57,7 +62,6 @@ namespace SpaceChart
         private void starScroll_Scroll(object sender, EventArgs e)
         {
             starBox.Text = starScroll.Value.ToString();
-            //AmountOfStars = (uint)starScroll.Value;
         }
 
         private void starBox_TextChanged(object sender, EventArgs e)
@@ -78,17 +82,24 @@ namespace SpaceChart
 
         private void clearButton_Click(object sender, EventArgs e)
         {
-            diagram.Plot.Clear();
-            diagram.Refresh();
             SunCheckBox.Visible = false;
             SunCheckBox.Checked = false;
             MainSequenceBox.Visible = false;
             MainSequenceBox.Checked = false;
             clearButton.Visible = false;
             WhiteDwarfsBox.Visible = false;
+            WhiteDwarfsBox.Checked = false;
             redGiantsBox.Visible = false;
+            redGiantsBox.Checked = false;
             SuperGiantsBox.Visible = false;
+            SuperGiantsBox.Checked = false;
             BrightGiantsBox.Visible = false;
+            BrightGiantsBox.Checked = false;
+            InfoLabel.Visible = false;
+            textBox1.Clear();
+            textBox1.Visible = false;
+            diagram.Plot.Clear();
+            diagram.Refresh();
         }
 
         private void SunCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -110,23 +121,6 @@ namespace SpaceChart
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            myDraggableMarker.X = -3800;
-            myDraggableMarker.Y = -9;
-            myDraggableMarker.Color = Color.Magenta;
-            myDraggableMarker.MarkerShape = MarkerShape.filledCircle;
-            myDraggableMarker.MarkerSize = 5;
-            diagram.Plot.Add(myDraggableMarker);
-            diagram.Refresh();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            label2.Text = myDraggableMarker.X.ToString();
-            label3.Text = myDraggableMarker.Y.ToString();
-        }
-
         private void MainSequenceBox_CheckedChanged(object sender, EventArgs e)
         {
             if (MainSequenceBox.Checked)
@@ -137,6 +131,14 @@ namespace SpaceChart
                 -4.5, -4.122, -3.483, -2.976, -2.437, -1.904, -1.464, -0.974, -0.533, -0.215};
                 diagram.Plot.AddScatter(xs, ys, Color.Yellow, 3, 1, label: "√лавна€ последовательность");
                 diagram.Refresh();
+                textBox1.Text = "√лавна€ последовательность Ч стади€ эволюции звЄзд, и соответствующий класс светимости. Ќа главную " +
+                    "последовательность звЄзды попадают после стадии протозвезды Ч когда их единственным источником энергии станов€тс€ " +
+                    "термо€дерные реакции синтеза гели€ из водорода, идущие в €дре." +
+                    "ѕо мере исчерпани€ водорода звезда становитс€ " +
+                    "немного €рче, отходит от начальной главной последовательности и, когда в €дре не остаЄтс€ водорода, звезда " +
+                    "окончательно покидает главную последовательность." +
+                    " ƒальнейшие стадии эволюции дл€тс€ гораздо меньше, чем стади€ главной последовательности, и, " +
+                    "как следствие, абсолютное большинство звЄзд во ¬селенной, включа€ —олнце, принадлежит главной последовательности.";
             }
             else
             {

@@ -20,6 +20,8 @@ namespace SpaceChart
             AbsoluteMagnitude = double.Parse(columns[1]);
             Temperature = 4600 * (1 / (0.92 * ColorIndex + 1.7) + 1 / (0.92 * ColorIndex + 0.62));
             Luminosity = Math.Pow(10, -AbsoluteMagnitude / 2.512);
+
+            //Вычисление цвета звезды по её цветовой температуре
                 double Kel = Temperature / 100;
                 double r, g, b;
 
